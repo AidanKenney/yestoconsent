@@ -81,6 +81,7 @@
             allowfullscreen></iframe>
     </div>
 
+  <div id="like_button_container"></div>
 
     <div class="fourcolumns">
         <a href="https://broadly.vice.com/en_us/article/evb4xz/teaching-kindergarteners-about-consent"
@@ -137,6 +138,15 @@
             </small>
         <!-- </div> -->
     </footer>
+
+    <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <!-- Load our React component. -->
+  <script type="module" src="like_button.js"></script>
+
 </body>
 
 </html>
