@@ -1,35 +1,26 @@
 'use strict';
 
-import axios from '../node_modules/axios/dist/axios.js'
-
 class LikeButton extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { liked: false };
+    this.state = {
+      liked: false,
+      html: ''
+     };
   }
 
   componentDidMount () {
-    axios({
-      url: "https://graph.facebook.com/v9.0/instagram_oembed?url=https://www.instagram.com/p/CH29f74rGeO/?utm_source=ig_web_copy_link/&access_token=395899871462736%7Cd2a5101e4de7d2f7a459f3ca204a7b03",
-      method: 'GET'
-      // headers: {
-      //   'Authorization': `Token token=${this.props.user.token}`
-      // }
+    const apiUrl = "https://graph.facebook.com/v9.0/instagram_oembed?url=https://www.instagram.com/p/CH29f74rGeO/?utm_source=ig_web_copy_link/&access_token=395899871462736%7Cd2a5101e4de7d2f7a459f3ca204a7b03"
+    fetch(apiUrl, {
+    method: 'get'
     })
-      .then(res => console.log(res))
-      // .then(res => this.setState({ item: res.data.item }))
-      // .then(() => this.props.msgAlert({
-      //   heading: 'Success',
-      //   variant: 'success',
-      //   message: 'Success to view your item!'
-      // }))
-      // .catch(() => (
-      //   this.props.msgAlert({
-      //     heading: 'Failure',
-      //     variant: 'danger',
-      //     message: 'Error 404!!!!!!'
-      //   })
-      // ))
+    .then(response => response.json())
+    .then(data => {
+      // this.setState({ html: data.html })
+      const insta = document.createElement('div')
+      insta.innerHTML = data.html
+      document.getElementById("like_button_container").appendChild(insta)
+    })
   }
 
   render() {
@@ -38,9 +29,11 @@ class LikeButton extends React.Component {
     }
 
     return (
-      <button onClick={() => this.setState({ liked: true }) }>
-        Like
-      </button>
+      <div>
+        <button onClick={() => this.setState({ liked: true }) }>
+          Like
+        </button>
+      </div>
     );
   }
 }
