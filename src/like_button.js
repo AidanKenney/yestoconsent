@@ -20,6 +20,7 @@ class LikeButton extends React.Component {
       const insta = document.createElement('div')
       insta.innerHTML = data.html
       document.getElementById("like_button_container").appendChild(insta)
+      window.instgrm.Embeds.process()
     })
   }
 

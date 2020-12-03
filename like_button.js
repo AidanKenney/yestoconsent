@@ -36,6 +36,7 @@ var LikeButton = function (_React$Component) {
         var insta = document.createElement('div');
         insta.innerHTML = data.html;
         document.getElementById("like_button_container").appendChild(insta);
+        window.instgrm.Embeds.process();
       });
     }
   }, {
